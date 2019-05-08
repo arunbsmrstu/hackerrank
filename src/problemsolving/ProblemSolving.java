@@ -38,7 +38,7 @@ public class ProblemSolving {
 			while (!isPrime(prime)) {
                             prime++;
 			}
-                        System.out.println("prime "+prime);
+                   
 			primes[i] = prime;
 			prime++;
                         
@@ -56,12 +56,12 @@ public class ProblemSolving {
 		}
 		return true;
 	}
-//primes.length &&
+
 	static int solve(int[] primes, long n) {
 		int result = 0;
 		long product = 1;
-                System.out.println(">>>"+primes.length);
-		for (int i = 0; product * primes[i] <= n; i++) {
+                
+		for (int i = 0; 1<primes.length && product * primes[i] <= n; i++) {
 			result++;
 			product *= primes[i];
 		}
