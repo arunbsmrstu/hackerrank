@@ -32,7 +32,7 @@ public class MatrixLayerRotation {
         
         
         for(int layer=0;layer<Math.min(m, n)/2;layer++){
-            for(int x=0;x<r ;x++){//r % (2 * (m + n - 2 - 4 * layer))
+            for(int x=0;x<r % (2 * (m + n - 2 - 4 * layer));x++){//r % (2 * (m + n - 2 - 4 * layer))
                 int i=layer;
                 int j=layer;
                 
