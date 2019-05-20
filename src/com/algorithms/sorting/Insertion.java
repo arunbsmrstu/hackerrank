@@ -3,20 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package problemsolving;
-
-import com.algorithms.sorting.Insertion;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+package com.algorithms.sorting;
 
 /**
  *
  * @author ASUS
  */
-public class BirthdayCakeCandles {
-    
-     public static void sort(int[] a) {
+public class Insertion {
+
+    public static void sort(int[] a) {
         int N = a.length; // array length
         for (int i = 0; i < N; i++) { // Exchange a[i] with smallest entry in a[i+1...N).
             int min = i; // index of minimal entr.
@@ -42,34 +37,20 @@ public class BirthdayCakeCandles {
         a[j] = temp;
     }
 
-   
-
-    static int birthdayCakeCandles(int[] ar) {
-
-        int count = 0;
-        sort(ar);
-        int max = ar[ar.length - 1];
-        for (int i = 0; i < ar.length; i++) {
-            if (max == ar[i]) {
-                count++;
-            }
+    public static void show(int[] a) {
+        for (int i = 0; i < a.length; i++) {
+            System.out.print(a[i] + " ");
         }
 
-        return count;
     }
 
-    public static void main(String arg[]) throws FileNotFoundException {
-        Scanner sc = new Scanner(new File("BirthdayCakeCandles.txt"));
-        int n = sc.nextInt();
-        int[] arr = new int[n];
-        int count = 0;
-
-        while (sc.hasNextInt()) {
-            arr[count] = sc.nextInt();
-            count++;
+    public static boolean isSorted(int[] a) {
+        for (int i = 1; i < a.length; i++) {
+            if (less(a[i], a[i - 1])) {
+                return false;
+            }
         }
-
-        System.out.println(birthdayCakeCandles(arr));
+        return true;
     }
 
 }
