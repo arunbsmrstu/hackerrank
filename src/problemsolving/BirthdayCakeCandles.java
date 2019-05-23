@@ -16,44 +16,20 @@ import java.util.Scanner;
  */
 public class BirthdayCakeCandles {
     
-     public static void sort(int[] a) {
-        int N = a.length; // array length
-        for (int i = 0; i < N; i++) { // Exchange a[i] with smallest entry in a[i+1...N).
-            int min = i; // index of minimal entr.
-            for (int j = i + 1; j < N; j++) {
-                if (less(a[j], a[min])) {
-                    min = j;
-                }
-            }
-            exch(a, i, min);
-        }
-    }
-
-    private static boolean less(int v, int w) {
-        if(v<w)
-            return true;
-        else
-            return false;
-    }
-
-    private static void exch(int[] a, int i, int j) {
-        int temp = a[i];
-        a[i] = a[j];
-        a[j] = temp;
-    }
-
-   
+    
 
     static int birthdayCakeCandles(int[] ar) {
 
-        int count = 0;
-        sort(ar);
-        int max = ar[ar.length - 1];
-        for (int i = 0; i < ar.length; i++) {
-            if (max == ar[i]) {
-                count++;
-            }
-        }
+      int count=0;
+      int max=0;
+      for(int i=0;i<ar.length;i++){
+          if(max<ar[i]){
+              max=ar[i];
+              count=1;
+          }else if(max==ar[i]){
+              count++;
+          }
+      }
 
         return count;
     }
