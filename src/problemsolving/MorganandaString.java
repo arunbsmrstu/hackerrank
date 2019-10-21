@@ -48,19 +48,17 @@ public class MorganandaString {
         while(stackOne.isEmpty() || !stackTwo.isEmpty() ){
             System.out.println(">stackOne>>"+stackOne.peek());
             System.out.println(">stackTwo>>"+stackTwo.peek());
-            if(stackOne.size()>0 && stackTwo.size()>0){
+          
                 if(stackOne.peek()<stackTwo.peek()){
                 result+=stackOne.peek();
                 stackOne.remove();
-                temp=removeFirstChar(a);
-            }else{
+                }else{
                  result+=stackTwo.peek();
                  stackTwo.remove();
-                 temp=removeFirstChar(b);
-            }
-            }
-            
+                }
         }
+            
+       
         
         if(temp!=null && temp.length()>0){
             result+=temp;
@@ -76,7 +74,7 @@ public class MorganandaString {
         String line_two="DANIEL";
     //   System.out.println(">>  "+removeFirstChar(line_two));
        
-        System.out.println(">>  "+morganAndString(line_one, line_two));
+        System.out.println(">>  "+morganAndString(line_two, line_one));
         
     }
     
