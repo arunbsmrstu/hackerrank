@@ -28,43 +28,48 @@ public class MorganandaString {
    return s.substring(1);
 }
     
-    public static String morganAndString(String a, String b) {
-        String result="";
-        String temp="";
-        List<Character> list_one= new ArrayList();
-        List<Character> list_two= new ArrayList();
-        Queue<Character> stackOne = new LinkedList<>(); 
-        Queue<Character> stackTwo =new LinkedList<>(); 
-         char[] chars_one = a.toCharArray();
-        char[] chars_two = b.toCharArray();
-         for(int i=0;i<chars_one.length;i++){
-            stackOne.add(chars_one[i]);
-        }
-        for(int i=0;i<chars_two.length;i++){
-            stackTwo.add(chars_two[i]);
-        }
-        System.out.println(">>"+stackOne);
-        System.out.println(">>"+stackTwo);
-        while(stackOne.isEmpty() || !stackTwo.isEmpty() ){
-            System.out.println(">stackOne>>"+stackOne.peek());
-            System.out.println(">stackTwo>>"+stackTwo.peek());
-          
-                if(stackOne.peek()<stackTwo.peek()){
-                result+=stackOne.peek();
-                stackOne.remove();
-                }else{
-                 result+=stackTwo.peek();
-                 stackTwo.remove();
+    public static String morganAndString(String A, String B) {
+        StringBuffer sb = new StringBuffer();
+            int i=0;
+            int j=0;
+            while(i < A.length() && j < B.length()) {
+                if (A.charAt(i) < B.charAt(j)) {
+                    sb.append(A.charAt(i++));
+                } else if (A.charAt(i) > B.charAt(j)) {
+                    sb.append(B.charAt(j++));
+                } else {
+                    int x = i, y = j;
+                    char a = A.charAt(i);
+                    for(; x < A.length() && y < B.length(); x++, y++) {
+                        if (A.charAt(x) != B.charAt(y)) {
+                            break;
+                        } else if (A.charAt(x) > a) {
+                            sb.append(A.substring(i, x)).append(B.substring(j, y));
+                            i = x; j = y;
+                            a = A.charAt(x);
+                        }
+                    }
+
+                    if (x == A.length()) {
+                        sb.append(B.charAt(j));
+                        j++;
+                    } else if (y == B.length()) {
+                        sb.append(A.charAt(i));
+                        i++;
+                    } else {
+                        if (A.charAt(x) < B.charAt(y)) {
+                            sb.append(A.charAt(i));
+                            i++;
+                        } else {
+                            sb.append(B.charAt(j));
+                            j++;
+                        }
+                    }
                 }
-        }
-            
-       
-        
-        if(temp!=null && temp.length()>0){
-            result+=temp;
-        }
-        
-        return result;
+            }
+
+            sb.append(A.substring(i)).append(B.substring(j));
+            return sb.toString();
     }
     
     
@@ -72,9 +77,7 @@ public class MorganandaString {
         
        String line_one="JACK";
         String line_two="DANIEL";
-    //   System.out.println(">>  "+removeFirstChar(line_two));
-       
-        System.out.println(">>  "+morganAndString(line_two, line_one));
+        System.out.println(morganAndString(line_one, line_two));
         
     }
     
